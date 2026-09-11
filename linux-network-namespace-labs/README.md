@@ -4,27 +4,6 @@ A hands-on lab series for understanding **Linux network namespaces and container
 
 ![Linux Network Namespaces Story](assets/story.png)
 
----
-
-## What Are Network Namespaces?
-
-A **Linux network namespace** provides an isolated network stack within the Linux kernel.
-
-Each network namespace can have its own:
-
-* Network interfaces
-* IP addresses
-* Routing tables
-* ARP/neighbor tables
-* Firewall rules
-* Network sockets and ports
-
-By default, network namespaces are isolated from one another. To allow them to communicate, we must explicitly create a networking path using mechanisms such as **veth pairs, Linux bridges, and routing**.
-
-This is one of the fundamental building blocks behind modern **container networking**. Technologies such as Docker and Kubernetes use Linux namespaces and other kernel networking features to provide isolated networking environments for containers.
-
----
-
 # 📖 The Story: The Linux Kingdom
 
 Once upon a time, there was a large and modern palace called the **Linux Kingdom**.
@@ -116,18 +95,8 @@ Eventually, all the children wanted to communicate through a shared network.
 
 The Emperor built a **Linux bridge** — a virtual Layer 2 switch.
 
-Multiple namespace interfaces could connect to the bridge:
-
-```text
-                  Linux Bridge
-                ┌──────────────┐
-                │              │
-          ┌─────┴─────┐  ┌─────┴─────┐
-          │           │  │           │
-        veth-a      veth-b        veth-c
-          │           │             │
-        ns-a        ns-b          ns-c
-```
+# Multiple namespace interfaces could connect to the bridge:
+![](./assets/bridge.png)
 
 The bridge forwards Ethernet frames between connected interfaces based on MAC addresses.
 
@@ -163,6 +132,29 @@ Network Namespace
 This is a common pattern in container networking.
 
 ---
+
+
+---
+
+## What Are Network Namespaces?
+
+A **Linux network namespace** provides an isolated network stack within the Linux kernel.
+
+Each network namespace can have its own:
+
+* Network interfaces
+* IP addresses
+* Routing tables
+* ARP/neighbor tables
+* Firewall rules
+* Network sockets and ports
+
+By default, network namespaces are isolated from one another. To allow them to communicate, we must explicitly create a networking path using mechanisms such as **veth pairs, Linux bridges, and routing**.
+
+This is one of the fundamental building blocks behind modern **container networking**. Technologies such as Docker and Kubernetes use Linux namespaces and other kernel networking features to provide isolated networking environments for containers.
+
+---
+
 
 # 🔑 Key Takeaways
 

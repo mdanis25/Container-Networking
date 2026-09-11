@@ -254,9 +254,12 @@ Namespace A
      |
    veth-B
      |
-Namespace B
+Namespace B 
 ```
 
+![](../assets/set-veth-pair-inside-ns.png)
+# veth pair with ip address 
+![](../assets/assign-ip-addr.png)
 
 ## Summary
 
